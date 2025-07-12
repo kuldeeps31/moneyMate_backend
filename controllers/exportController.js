@@ -1,5 +1,5 @@
 const Customer = require("../models/Customer");
-const Payment = require("../models/Payment"); // Import this at the top
+const Payment = require("../models/payment"); // Import this at the top
 const { generateCustomerExport } = require("../services/exportExcel");
 const ExcelJS = require("exceljs");
 
