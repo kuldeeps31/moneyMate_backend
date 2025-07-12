@@ -18,9 +18,10 @@ exports.buildWhatsAppMessage = function (
   const formattedDate = new Date(billDate).toLocaleDateString("hi-IN");
 
   const header = `\`\`\`
-Items        Qty   Rate   Total
+Items      Qty   Rate   Total
 -------------------------------
 \`\`\``;
+
 
   const itemRows = items
     .map((item) => {
@@ -33,7 +34,7 @@ Items        Qty   Rate   Total
     .join("\n");
 
   return `
-🧾 *RM दुकान* - दिनांक: ${formattedDate}
+🧾  - दिनांक: ${formattedDate}
 
 नमस्ते *${name}*, आपका आज का ऑर्डर सफलतापूर्वक दर्ज हो गया है।
 

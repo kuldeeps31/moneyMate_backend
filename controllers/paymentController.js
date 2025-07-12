@@ -98,20 +98,22 @@ const check = oldPayments.reduce(
   0
 );
 const previousDue = customer.totalAmount-check;
-console.log(customer.totalAmount,"ct")
-console.log("shi value",customer.totalAmount-check)
-console.log(`💳 पिछला बकाया: ₹${previousDue}\n`);
-console.log(`💰 आज का कुल भुगतान: ₹${amountPaid}\n`);
-console.log( `📌 कुल बकाया: ₹${customer.remainingAmount}\n\n`)
+//ye checking k liya hai
+//console.log(customer.totalAmount,"ct")
+//console.log("shi value",customer.totalAmount-check)
+//console.log(`💳 पिछला बकाया: ₹${previousDue}\n`);
+//console.log(`💰 आज का कुल भुगतान: ₹${amountPaid}\n`);
+//console.log( `📌 कुल बकाया: ₹${customer.remainingAmount}\n\n`)
 
     // ✅ Build separate message for updatePayment
-    const message = `🧾 *RM दुकान - भुगतान अपडेट*\n\n` +
+    const message = `🧾 * भुगतान अपडेट*\n\n` +
       `नमस्ते ${customer.name}, आपका भुगतान सफलतापूर्वक अपडेट किया गया है।\n\n` +
     // previousDue
       `💳 पिछला बकाया: ₹${previousDue}\n` + //purana hai
      `💰 आज का कुल भुगतान: ₹${amountPaid}\n` +
       `📌 कुल बकाया: ₹${customer.remainingAmount}\n\n` +
-      (customer.nextPaymentDate ? `📅 अगली भुगतान तिथि: ${new Date(customer.nextPaymentDate).toLocaleDateString("hi-IN")}\n\n` : '') +
+      //next paayment date nhi bhejna hai
+      //(customer.nextPaymentDate ? `📅 अगली भुगतान तिथि: ${new Date(customer.nextPaymentDate).toLocaleDateString("hi-IN")}\n\n` : '') +
       `🙏 धन्यवाद! फिर से पधारिए 🙏`;
 
     await sendWhatsAppMessage(customer.phone, message);
@@ -369,7 +371,7 @@ exports.sendBillManually = async (req, res) => {
       customer.name,
       payment.items,
       payment.totalAmount,
-      
+
       payment.amountPaid,
       totalDue,
       customer.nextPaymentDate,

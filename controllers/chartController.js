@@ -2,75 +2,8 @@ const Customer = require("../models/Customer");
 
 
 
-
-
-
-//exports.DashChart = async (req, res) => {
-//  try {
-//    const currentYear = new Date().getFullYear();
-//    const startDate = new Date(`${currentYear}-01-01`);
-//    const endDate = new Date(`${currentYear + 1}-01-01`);
-
-//    // Monthly Revenue
-//    const monthlyRevenue = await Customer.aggregate([
-//      {
-//        $match: {
-//          paymentDate: { $gte: startDate, $lt: endDate }
-//        }
-//      },
-//      {
-//        $group: {
-//          _id: { month: { $month: "$paymentDate" } },
-//          totalRevenue: { $sum: "$paidAmount" }
-//        }
-//      },
-//      {
-//        $sort: { "_id.month": 1 }
-//      }
-//    ]);
-
-//    // Customer Count Monthly
-//    const customerGrowth = await Customer.aggregate([
-//      {
-//        $match: {
-//          createdAt: { $gte: startDate, $lt: endDate }
-//        }
-//      },
-//      {
-//        $group: {
-//          _id: { month: { $month: "$createdAt" } },
-//          totalCustomers: { $sum: 1 }
-//        }
-//      },
-//      {
-//        $sort: { "_id.month": 1 }
-//      }
-//    ]);
-
-//    // Paid vs Unpaid
-//    const paidUnpaid = await Customer.aggregate([
-//      {
-//        $group: {
-//          _id: null,
-//          totalPaid: { $sum: "$paidAmount" },
-//          totalUnpaid: { $sum: "$balanceAmount" }
-//        }
-//      }
-//    ]);
-
-//    res.status(200).json({
-//      monthlyRevenue,
-//      customerGrowth,
-//      paidUnpaid: paidUnpaid[0] || { totalPaid: 0, totalUnpaid: 0 }
-//    });
-//  } catch (err) {
-//    res.status(500).json({ message: "Dashboard summary fetch failed", error: err });
-//  }
-//};
-
-
 // controllers/dashboardController.js
-const Payment = require("../models/Payment");
+const Payment = require("../models/payment");
 
 
 exports.getMonthlyRevenueAndSales = async (req, res) => {
