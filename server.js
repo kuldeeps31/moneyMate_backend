@@ -74,6 +74,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+
+
 app.use(
   '/public',
   cors({ origin: process.env.FRONTEND_URL, credentials: true }),
@@ -111,7 +113,7 @@ require("./services/sendWhatsAppBills");
 
 //fro chart
 app.use('/api/Chart', require('./routes/ChartRoutes'));
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ;
 
 
 app.listen(PORT, () =>
