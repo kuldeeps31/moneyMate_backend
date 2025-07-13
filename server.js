@@ -26,29 +26,31 @@ const app = express();
 
 
 
-//
-//const allowedOrigins = process.env.FRONTEND_URL.split(',');
 
-//app.use(cors({
-//  origin: function (origin, callback) {
-//    // Allow requests with no origin (like mobile apps, Postman)
-//    if (!origin || allowedOrigins.includes(origin)) {
-//      callback(null, true);
-//    } else {
-//      callback(new Error('Not allowed by CORS'));
-//    }
-//  },
-//  credentials: true,
-//}));
+
 
  
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL ,
-    credentials: true
-  })
-);
+//app.use(
+//  cors({
+//    origin: process.env.FRONTEND_URL ,
+//    credentials: true
+//  })
+//);
 
+
+const allowedOrigin = process.env.FRONTEND_URL || 'http://localhost:5173';
+
+app.use(cors({
+  origin: allowedOrigin,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+app.options('*', cors({
+  origin: allowedOrigin,
+  credentials: true
+}));
 
 
 
@@ -59,6 +61,8 @@ app.get('/admin/profile-pic', (req, res) => {
   res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
   res.sendFile(path.join(__dirname, 'public', 'adminPic.jpeg'));
 });
+
+
 
 app.use(
   helmet({
