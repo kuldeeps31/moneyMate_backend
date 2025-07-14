@@ -59,10 +59,10 @@ app.options('*', cors({
 app.use(express.json());
 
 
-//app.get('/admin/profile-pic', (req, res) => {
-//  res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
-//  res.sendFile(path.join(__dirname, 'public', 'adminPic.jpeg'));
-//});s
+app.get('/admin/profile-pic', (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.sendFile(path.join(__dirname, 'public', 'adminPic.jpeg'));
+});s
 
 
 
