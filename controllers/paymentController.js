@@ -101,9 +101,9 @@ const previousDue = customer.totalAmount-check;
 //ye checking k liya hai
 //console.log(customer.totalAmount,"ct")
 //console.log("shi value",customer.totalAmount-check)
-//console.log(`💳 पिछला बकाया: ₹${previousDue}\n`);
-//console.log(`💰 आज का कुल भुगतान: ₹${amountPaid}\n`);
-//console.log( `📌 कुल बकाया: ₹${customer.remainingAmount}\n\n`)
+console.log(`💳 पिछला बकाया: ₹${previousDue}\n`);
+console.log(`💰 आज का कुल भुगतान: ₹${amountPaid}\n`);
+console.log( `📌 कुल बकाया: ₹${customer.remainingAmount}\n\n`)
 
     // ✅ Build separate message for updatePayment
     const message = `🧾 * भुगतान अपडेट*\n\n` +
