@@ -87,7 +87,8 @@ const { buildWhatsAppMessage } = require("../controllers/customerController");
 
 
 //cron.schedule("* * * * *", async () => {
-  cron.schedule("* 23 * * *", async () => {
+  //cron.schedule("* 23 * * *", async () => {
+    cron.schedule("0 23 * * *", async () => {
   try {
     const customersToSend = await Customer.find({ isSent: false });
 
